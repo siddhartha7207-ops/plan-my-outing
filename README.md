@@ -1,16 +1,65 @@
-# React + Vite
+Plan-My-Outing
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plan-My-Outing is a responsive web application that helps users plan outings such as day trips, weekend getaways, or group activities. It allows users to organize activities, manage budgets, and view plans in a simple and interactive interface.
 
-Currently, two official plugins are available:
+Live Demo:
+https://siddhartha7207-ops.github.io/plan-my-outing/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Overview:
+Plan-My-Outing provides an easy-to-use interface where users can create outing plans, add activities and locations, track estimated budgets, and manage schedules.
 
-## React Compiler
+Features:
+- Landing page with project introduction
+- Interactive UI for planning outings
+- Form to add outing details
+- Budget and itinerary overview
+- Fully responsive design
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Technologies Used:
+- HTML5
+- CSS3
+- JavaScript
 
-## Expanding the ESLint configuration
+Project Structure:
+plan-my-outing/
+index.html
+css/style.css
+js/script.js
+assets/images
+README.md
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+How to Set Up the Project:
+
+Prerequisites:
+- Modern web browser
+- Git (optional)
+
+Clone the Repository:
+git clone https://github.com/siddhartha7207-ops/plan-my-outing.git
+cd plan-my-outing
+
+Run the Project Locally:
+Open index.html in any web browser.
+
+Optional Live Server Setup:
+Use Visual Studio Code and install the Live Server extension. Right-click index.html and open with Live Server.
+
+Customization:
+- Modify UI styles in css/style.css
+- Modify logic in js/script.js
+- Modify structure in index.html
+
+Deployment:
+Push code to GitHub.
+Go to repository settings.
+Enable GitHub Pages from main branch root.
+Access using https://<username>.github.io/plan-my-outing/
+
+Contributing:
+Fork the repository, create a new branch, make changes, and submit a pull request.
+
+License:
+MIT License
+
+Author:
+Siddhartha7207-ops
