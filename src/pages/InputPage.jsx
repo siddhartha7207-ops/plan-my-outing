@@ -353,8 +353,11 @@ function InputPage() {
                             <input
                                 type="number"
                                 className="budget-input"
-                                value={formData.budget}
-                                onChange={(e) => handleChange('budget', Number(e.target.value))}
+                                value={formData.budget === 0 ? '' : formData.budget}
+                                onChange={(e) => {
+                                    const val = e.target.value;
+                                    handleChange('budget', val === '' ? 0 : parseInt(val, 10) || 0);
+                                }}
                                 min="200"
                                 step="100"
                             />
