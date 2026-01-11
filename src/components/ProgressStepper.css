@@ -1,0 +1,137 @@
+.stepper-container {
+    width: 100%;
+    padding: var(--space-6) 0;
+    overflow-x: auto;
+}
+
+.stepper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-width: max-content;
+    padding: 0 var(--space-4);
+}
+
+.step-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-width: 120px;
+}
+
+/* Connector Line */
+.step-connector {
+    position: absolute;
+    top: 20px;
+    right: 50%;
+    width: calc(100% - 40px);
+    height: 3px;
+    background: var(--border-color);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    transform: translateX(-50%);
+    margin-right: 50%;
+}
+
+.connector-fill {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+}
+
+/* Step Circle */
+.step-circle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    z-index: 1;
+}
+
+.step-circle:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.step-circle.completed {
+    background: var(--gradient-primary);
+    border-color: transparent;
+    color: white;
+}
+
+.step-circle.current {
+    border-color: var(--primary-500);
+    color: var(--primary-400);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Pulse Animation */
+.step-pulse {
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-500);
+    pointer-events: none;
+}
+
+/* Step Label */
+.step-label {
+    margin-top: var(--space-3);
+    text-align: center;
+}
+
+.step-title {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.step-label.current .step-title {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.step-subtitle {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .step-wrapper {
+        min-width: 80px;
+    }
+
+    .step-circle {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+
+    .step-connector {
+        top: 16px;
+    }
+
+    .step-title {
+        font-size: 0.75rem;
+    }
+
+    .step-subtitle {
+        display: none;
+    }
+}

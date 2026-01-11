@@ -1,0 +1,421 @@
+.plan-page {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    padding-top: 70px;
+}
+
+.plan-container {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: var(--space-6);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-6);
+}
+
+/* Sidebar */
+.plan-sidebar {
+    position: sticky;
+    top: calc(70px + var(--space-6));
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    width: fit-content;
+}
+
+.back-btn:hover {
+    border-color: var(--primary-500);
+    color: var(--primary-400);
+}
+
+/* Selected Place Card */
+.selected-place-card {
+    background: var(--bg-card);
+    border: 2px solid var(--primary-500);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+}
+
+.selected-place-card h3 {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-3);
+}
+
+.place-info {
+    display: flex;
+    gap: var(--space-3);
+    color: var(--primary-400);
+    margin-bottom: var(--space-3);
+}
+
+.place-name {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.place-address {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.place-stats {
+    display: flex;
+    gap: var(--space-4);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Quick Summary */
+.quick-summary {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+}
+
+.quick-summary h4 {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-4);
+}
+
+.summary-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.summary-item.done {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success-500);
+}
+
+.summary-item .check {
+    margin-left: auto;
+}
+
+/* Generate Button */
+.generate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: var(--radius-xl);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.generate-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+}
+
+.generate-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Main Content */
+.plan-main {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+/* Tabs */
+.plan-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.tab-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+}
+
+.tab-btn.active {
+    color: var(--primary-400);
+    border-bottom-color: var(--primary-500);
+}
+
+/* Tab Content */
+.tab-content {
+    padding: var(--space-6);
+}
+
+.tab-header {
+    margin-bottom: var(--space-6);
+}
+
+.tab-header h2 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-2);
+}
+
+.tab-header p {
+    color: var(--text-secondary);
+}
+
+.tab-header strong {
+    color: var(--primary-400);
+}
+
+/* Transport Note */
+.transport-note {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-radius: var(--radius-lg);
+    font-size: 0.875rem;
+    color: var(--primary-400);
+    margin-bottom: var(--space-6);
+}
+
+/* Transport List */
+.transport-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+/* Food Grid */
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+}
+
+/* Movies Grid */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-4);
+}
+
+/* Selection Sections */
+.selection-section {
+    margin-bottom: var(--space-6);
+}
+
+.selection-section h3 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-4);
+}
+
+/* Theatre List */
+.theatre-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.theatre-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-align: left;
+}
+
+.theatre-btn:hover {
+    border-color: var(--primary-500);
+}
+
+.theatre-btn.active {
+    border-color: var(--primary-500);
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.theatre-name {
+    flex: 1;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.theatre-features {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.feature {
+    padding: 2px 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--accent-500);
+    background: rgba(249, 115, 22, 0.15);
+    border-radius: var(--radius-sm);
+}
+
+.theatre-price {
+    font-size: 0.85rem;
+    color: var(--success-500);
+    font-weight: 600;
+}
+
+/* Seat Categories */
+.seat-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.seat-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-3) var(--space-5);
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.seat-btn:hover {
+    border-color: var(--primary-500);
+}
+
+.seat-btn.active {
+    border-color: var(--primary-500);
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.seat-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.seat-btn.active .seat-name {
+    color: var(--primary-400);
+}
+
+.seat-price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Showtime List */
+.showtime-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.showtime-btn {
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.showtime-btn:hover {
+    border-color: var(--primary-500);
+}
+
+.showtime-btn.active {
+    border-color: var(--primary-500);
+    background: var(--primary-500);
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .plan-container {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-sidebar {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .plan-container {
+        padding: var(--space-4);
+    }
+
+    .tab-btn span {
+        display: none;
+    }
+
+    .food-grid,
+    .movies-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,257 @@
+.budget-tracker {
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+    overflow: hidden;
+}
+
+.budget-tracker.warning {
+    border-color: var(--warning-500);
+}
+
+.budget-tracker.exceeded {
+    border-color: var(--error-500);
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.budget-tracker.compact {
+    padding: var(--space-3);
+    border: none;
+    background: transparent;
+}
+
+/* Header */
+.tracker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-4);
+}
+
+.tracker-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.tracker-status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-3);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+}
+
+.tracker-status.healthy {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--success-500);
+}
+
+.tracker-status.warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--warning-500);
+}
+
+.tracker-status.exceeded {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--error-500);
+}
+
+/* Progress */
+.tracker-progress {
+    margin-bottom: var(--space-4);
+}
+
+.progress-bar-bg {
+    position: relative;
+    height: 12px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--gradient-primary);
+    z-index: 1;
+}
+
+.progress-bar-fill.warning {
+    background: linear-gradient(90deg, var(--warning-500), var(--warning-600));
+}
+
+.progress-bar-fill.exceeded {
+    background: linear-gradient(90deg, var(--error-500), var(--error-600));
+}
+
+.progress-segments {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    z-index: 2;
+}
+
+.segment {
+    height: 100%;
+    opacity: 0.9;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--space-2);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Summary */
+.tracker-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+}
+
+.budget-tracker.compact .tracker-summary {
+    margin-bottom: 0;
+}
+
+.summary-item {
+    text-align: center;
+}
+
+.summary-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-1);
+}
+
+.summary-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.summary-item.spent .summary-value {
+    color: var(--primary-400);
+}
+
+.summary-item.remaining.healthy .summary-value {
+    color: var(--success-500);
+}
+
+.summary-item.remaining.warning .summary-value {
+    color: var(--warning-500);
+}
+
+.summary-item.remaining.exceeded .summary-value {
+    color: var(--error-500);
+}
+
+/* Breakdown */
+.breakdown-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-3);
+}
+
+.breakdown-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.breakdown-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.breakdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.breakdown-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.breakdown-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.breakdown-amount {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.breakdown-bar {
+    height: 4px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.breakdown-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+}
+
+/* Warning */
+.tracker-warning {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    padding: var(--space-3);
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--error-500);
+    border-radius: var(--radius-lg);
+    font-size: 0.85rem;
+    color: var(--error-500);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .tracker-summary {
+        grid-template-columns: 1fr;
+        gap: var(--space-2);
+    }
+
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .summary-label {
+        margin-bottom: 0;
+    }
+}
