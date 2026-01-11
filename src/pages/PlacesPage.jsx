@@ -29,23 +29,20 @@ function PlacesPage() {
     const [selectedCity, setSelectedCity] = useState(city ? city.toLowerCase() : 'bangalore');
     const [showFilters, setShowFilters] = useState(false);
 
-    // Redirect if no budget set
-    useEffect(() => {
-        if (!budget || budget === 0) {
-            navigate('/plan');
-        }
-    }, [budget, navigate]);
+    // Use default values if budget not set (allows direct access to Discover)
+    const effectiveBudget = budget || 5000;
+    const effectivePeople = numberOfPeople || 2;
 
     // Get and rank places
     const allPlaces = useMemo(() => {
         const places = getPlacesByCity(selectedCity);
         return rankPlaces(places, {
-            budget,
-            numberOfPeople,
+            budget: effectiveBudget,
+            numberOfPeople: effectivePeople,
             outingType,
             timeWindow
         });
-    }, [selectedCity, budget, numberOfPeople, outingType, timeWindow]);
+    }, [selectedCity, effectiveBudget, effectivePeople, outingType, timeWindow]);
 
     // Filter places
     const filteredPlaces = useMemo(() => {
@@ -72,7 +69,7 @@ function PlacesPage() {
 
     // Separate affordable and expensive places
     const { affordablePlaces, expensivePlaces } = useMemo(() => {
-        const budgetPerPerson = budget / numberOfPeople;
+        const budgetPerPerson = effectiveBudget / effectivePeople;
         const affordable = filteredPlaces.filter(p =>
             (p.entryCost + p.averageSpend) <= budgetPerPerson * 0.5
         );
@@ -80,7 +77,7 @@ function PlacesPage() {
             (p.entryCost + p.averageSpend) > budgetPerPerson * 0.5
         );
         return { affordablePlaces: affordable, expensivePlaces: expensive };
-    }, [filteredPlaces, budget, numberOfPeople]);
+    }, [filteredPlaces, effectiveBudget, effectivePeople]);
 
     const handleSelectPlace = (place) => {
         updateInputs({ city: selectedCity });
