@@ -25,7 +25,7 @@ import { cities, getPlacesByCity } from '../data/places';
 import { getTransportOptions, getBestTransportOptions, cityStartLocations, calculateDistance } from '../data/transport';
 import { getRestaurantsByCity, filterRestaurantsByPreference, rankRestaurants } from '../data/restaurants';
 import { rankPlaces } from '../utils/placeRanker';
-import { GeminiService } from '../services/gemini';
+import { OpenRouterService } from '../services/openrouter';
 import ProgressStepper from '../components/ProgressStepper';
 import './InputPage.css';
 
@@ -48,8 +48,8 @@ function InputPage() {
         setRestaurant
     } = usePlan();
 
-    const [apiKey, setApiKey] = useState('');
-    const [showApiKey, setShowApiKey] = useState(false);
+    // Read API Key from environment
+    const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTE_API_KEY;
 
     const [currentStep, setCurrentStep] = useState(0);
     const [isGenerating, setIsGenerating] = useState(false);
@@ -149,7 +149,7 @@ function InputPage() {
         calculateBudgetAllocation();
 
         // REAL AI GENERATION
-        if (apiKey) {
+        if (OPENROUTER_API_KEY) {
             try {
                 const planDetails = {
                     duration: totalDuration,
@@ -164,16 +164,17 @@ function InputPage() {
                     foodCost: FOOD_COST_PER_PERSON
                 };
 
-                const aiTimeline = await GeminiService.generateItinerary(apiKey, planDetails);
+                const aiTimeline = await OpenRouterService.generateItinerary(OPENROUTER_API_KEY, planDetails);
 
                 // Store AI timeline in context
                 updateAiTimeline(aiTimeline);
             } catch (error) {
                 console.error("AI Generation Failed:", error);
-                alert("AI Generation failed. Falling back to standard planner.");
+                // Fallback is handled below by standard planner
                 updateAiTimeline(null);
             }
         } else {
+            console.warn("VITE_OPENROUTE_API_KEY NOT FOUND In ENV");
             updateAiTimeline(null);
         }
 
@@ -456,41 +457,29 @@ function InputPage() {
                             <Clock size={32} />
                         </div>
                         <h2>When's Your Outing?</h2>
-                        <p>Set your available time window</p>
-
-                        <div className="time-inputs">
-                            <div className="time-field">
-                                <label>Start Time</label>
-                                <input
-                                    type="time"
-                                    className="input"
-                                    value={formData.timeStart}
-                                    onChange={(e) => handleChange('timeStart', e.target.value)}
-                                />
-                            </div>
-                            <div className="time-separator">to</div>
-                            <div className="time-field">
-                                <label>End Time</label>
-                                <input
-                                    type="time"
-                                    className="input"
-                                    value={formData.timeEnd}
-                                    onChange={(e) => handleChange('timeEnd', e.target.value)}
-                                />
-                            </div>
-                        </div>
-
-                        {errors.time && <p className="error-text">{errors.time}</p>}
+                        <p>Select your preferred time slot</p>
 
                         <div className="time-presets">
-                            <button className="preset-btn" onClick={() => { handleChange('timeStart', '10:00'); handleChange('timeEnd', '14:00'); }}>
-                                Morning
+                            <button
+                                className={`preset-btn ${formData.timeStart === '10:00' && formData.timeEnd === '14:00' ? 'active' : ''}`}
+                                onClick={() => { handleChange('timeStart', '10:00'); handleChange('timeEnd', '14:00'); }}
+                            >
+                                <span>Morning</span>
+                                <small>10:00 - 14:00</small>
                             </button>
-                            <button className="preset-btn" onClick={() => { handleChange('timeStart', '16:00'); handleChange('timeEnd', '22:00'); }}>
-                                Evening
+                            <button
+                                className={`preset-btn ${formData.timeStart === '16:00' && formData.timeEnd === '22:00' ? 'active' : ''}`}
+                                onClick={() => { handleChange('timeStart', '16:00'); handleChange('timeEnd', '22:00'); }}
+                            >
+                                <span>Evening</span>
+                                <small>16:00 - 22:00</small>
                             </button>
-                            <button className="preset-btn" onClick={() => { handleChange('timeStart', '10:00'); handleChange('timeEnd', '22:00'); }}>
-                                Full Day
+                            <button
+                                className={`preset-btn ${formData.timeStart === '10:00' && formData.timeEnd === '22:00' ? 'active' : ''}`}
+                                onClick={() => { handleChange('timeStart', '10:00'); handleChange('timeEnd', '22:00'); }}
+                            >
+                                <span>Full Day</span>
+                                <small>10:00 - 22:00</small>
                             </button>
                         </div>
                     </div>
@@ -589,7 +578,7 @@ function InputPage() {
                         <h2>Creating Your Perfect Plan</h2>
                         <p>AI is finding the best options for you...</p>
                         <div className="generating-steps">
-                            <span>✓ Analyzing budget</span>
+                            <span>{OPENROUTER_API_KEY ? '✓ Using Gemini AI via OpenRouter' : '✓ Analyzing budget'}</span>
                             <span>✓ Finding best places</span>
                             <span>✓ Selecting transport</span>
                             <span>✓ Choosing restaurants</span>

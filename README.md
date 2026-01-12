@@ -1,65 +1,82 @@
-Plan-My-Outing
+# 🗺️ Plan My Outing
 
-Plan-My-Outing is a responsive web application that helps users plan outings such as day trips, weekend getaways, or group activities. It allows users to organize activities, manage budgets, and view plans in a simple and interactive interface.
+[Live Demo](https://siddhartha7207-ops.github.io/plan-my-outing/)
 
-Live Demo:
-https://siddhartha7207-ops.github.io/plan-my-outing/
+Plan My Outing is a modern, AI-powered travel itinerary planner designed to help you maximize your day out. Whether you're a local or a tourist, our application uses advanced AI to create a realistic, budget-conscious plan tailored to your preferences.
 
-Overview:
-Plan-My-Outing provides an easy-to-use interface where users can create outing plans, add activities and locations, track estimated budgets, and manage schedules.
+## ✨ Features
 
-Features:
-- Landing page with project introduction
-- Interactive UI for planning outings
-- Form to add outing details
-- Budget and itinerary overview
-- Fully responsive design
+-   **🤖 AI-Powered Itineraries**: Leveraging Gemini AI via OpenRouter to generate contiguous, realistic timelines.
+-   **💰 Budget Optimization**: Intelligently allocates your budget across transport, food, and activities.
+-   **🚗 Transport Options**: Compares cheapest vs. fastest routes using local data (Buses, Cabs, etc.).
+-   **📍 Local Discovery**: Recommends the best places to visit based on your starting location and city.
+-   **📈 Real-time Validation**: Uses Hugging Face's Mistral model to verify and rate your plan for realism.
+-   **✨ Premium UI**: Beautiful, responsive interface built with Framer Motion for smooth transitions.
 
-Technologies Used:
-- HTML5
-- CSS3
-- JavaScript
+## 🚀 Tech Stack
 
-Project Structure:
-plan-my-outing/
-index.html
-css/style.css
-js/script.js
-assets/images
-README.md
+-   **Frontend**: React 19, Vite
+-   **Styling**: Vanilla CSS, Lucide React (Icons)
+-   **Animation**: Framer Motion
+-   **AI Services**:
+    -   OpenRouter (Gemini 1.5 Flash)
+    -   Hugging Face (Mistral-7B-Instruct)
+-   **Routing**: React Router DOM v7
 
-How to Set Up the Project:
+## 🛠️ Getting Started
 
-Prerequisites:
-- Modern web browser
-- Git (optional)
+### Prerequisites
 
-Clone the Repository:
-git clone https://github.com/siddhartha7207-ops/plan-my-outing.git
-cd plan-my-outing
+-   [Node.js](https://nodejs.org/) (v18 or higher recommended)
+-   [npm](https://www.npmjs.com/)
 
-Run the Project Locally:
-Open index.html in any web browser.
+### Installation
 
-Optional Live Server Setup:
-Use Visual Studio Code and install the Live Server extension. Right-click index.html and open with Live Server.
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/siddhartha7207-ops/plan-my-outing.git
+    cd plan-my-outing
+    ```
 
-Customization:
-- Modify UI styles in css/style.css
-- Modify logic in js/script.js
-- Modify structure in index.html
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-Deployment:
-Push code to GitHub.
-Go to repository settings.
-Enable GitHub Pages from main branch root.
-Access using https://<username>.github.io/plan-my-outing/
+3.  **Set up API Keys**
+    Create a `.env` file in the root directory and add:
+    ```env
+    VITE_OPENROUTE_API_KEY=your_openrouter_api_key
+    ```
 
-Contributing:
-Fork the repository, create a new branch, make changes, and submit a pull request.
+4.  **Launch the development server**
+    ```bash
+    npm run dev
+    ```
 
-License:
-MIT License
+## 📦 Project Structure
 
-Author:
-Siddhartha7207-ops
+```text
+src/
+├── components/     # Reusable UI components
+├── context/        # PlanContext for global state management
+├── data/           # Static data for cities, transport, and restaurants
+├── pages/          # Main application pages (Landing, Input, Summary, etc.)
+├── services/       # AI service integrations (Gemini, HF, OpenRouter)
+├── utils/          # Helper functions for ranking and optimization
+└── App.jsx         # Main application component & routing
+```
+
+## 📜 Available Scripts
+
+-   `npm run dev`: Starts the Vite development server.
+-   `npm run build`: Builds the application for production.
+-   `npm run preview`: Locally preview the production build.
+-   `npm run deploy`: Deploys the application to GitHub Pages.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+---
+Built with ❤️ by [Siddhartha7207-ops](https://github.com/siddhartha7207-ops) for better travel experiences.

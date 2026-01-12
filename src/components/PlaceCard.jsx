@@ -5,7 +5,6 @@ import {
     MapPin,
     IndianRupee,
     Users,
-    ChevronRight,
     ShoppingBag,
     Film,
     Landmark,
@@ -135,14 +134,7 @@ function PlaceCard({ place, onSelect, isSelected, numberOfPeople = 1, showDetail
                         )}
                     </div>
 
-                    <motion.button
-                        className="place-select-btn"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        {isSelected ? 'Selected' : 'Select'}
-                        <ChevronRight size={16} />
-                    </motion.button>
+
                 </div>
             </div>
 

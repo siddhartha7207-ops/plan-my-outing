@@ -290,23 +290,48 @@
 .time-presets {
     display: flex;
     justify-content: center;
-    gap: var(--space-2);
+    gap: var(--space-3);
 }
 
 .preset-btn {
-    padding: var(--space-2) var(--space-4);
-    font-size: 0.85rem;
-    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-4) var(--space-5);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
     background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-full);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
     cursor: pointer;
     transition: all var(--transition-fast);
 }
 
+.preset-btn small {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
 .preset-btn:hover {
-    border-color: #3b82f6;
-    color: #3b82f6;
+    border-color: #EC4899;
+    color: #EC4899;
+}
+
+.preset-btn:hover small {
+    color: #EC4899;
+}
+
+.preset-btn.active {
+    border-color: #EC4899;
+    background: #fdf2f8;
+    color: #EC4899;
+}
+
+.preset-btn.active small {
+    color: #EC4899;
 }
 
 /* Preferences */
